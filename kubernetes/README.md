@@ -10,4 +10,4 @@ These can be installed with `asdf`.
 
 ## Usage
 
-The `charts` directory is intended for helm-related management. `charts/install.sh` can be run after configuring `kubectl` to deploy Trino.
+The `charts` directory is intended for helm-related management. `charts/install.sh` can be run after configuring `kubectl` to deploy e.g. Trino, the nginx ingress controller, kdevops.com webservers, etc.
