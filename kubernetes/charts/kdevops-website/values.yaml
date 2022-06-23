@@ -48,7 +48,7 @@ ingress:
      nginx.ingress.kubernetes.io/ssl-redirect: "true"
      cert-manager.io/cluster-issuer: letsencrypt-staging
   hosts:
-    - host: cervyd.com
+    - host: dev.kdevops.com
       paths:
         - path: /
           pathType: Prefix
