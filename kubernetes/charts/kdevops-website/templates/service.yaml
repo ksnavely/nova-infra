@@ -7,9 +7,13 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - port: {{ .Values.service.port }} # this is 443
+      targetPort: 5000
       protocol: TCP
-      name: http
+      name: https
+      #    - port: 80
+      #      targetPort: 5000
+      #      protocol: TCP
+      #      name: http
   selector:
     {{- include "kdevops-website.selectorLabels" . | nindent 4 }}

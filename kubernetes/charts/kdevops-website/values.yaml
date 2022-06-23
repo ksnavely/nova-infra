@@ -38,25 +38,21 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 5000
+  port: 443
 
 ingress:
   enabled: true
   className: ""
-  annotations: {}
+  annotations:
      kubernetes.io/ingress.class: nginx
+     nginx.ingress.kubernetes.io/ssl-redirect: true
      cert-manager.io/cluster-issuer: letsencrypt-staging
   hosts:
     - host: cervyd.com
       paths:
         - path: /
-      backend:
-        serviceName: kdevops-website
-        servicePort: 5000
-  tls:
-      hosts:
-        - cervyd.com
-  #  - secretName: chart-example-tls
+          pathType: Prefix
+  tls: []
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
