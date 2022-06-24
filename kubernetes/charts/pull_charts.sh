@@ -8,3 +8,4 @@ helm pull --untar jetstack/cert-manager
 # Trino, SQL at scale
 helm pull --untar trino/trino
 
+helm pull --untar bitnami/mongodb
