@@ -5,8 +5,7 @@ port-forward:
 	./website-port-forward.sh
 
 test-website:
-	helm uninstall kdevops-website
-	helm install kdevops-website kdevops-website --values kdevops-website/values.yaml
+	helm upgrade kdevops-website kdevops-website/ --values kdevops-website/values.yaml --set website_json_conf="`cat kdevops-website/website.json | base64`"
 
 update-repos:
 	./add_repos.sh

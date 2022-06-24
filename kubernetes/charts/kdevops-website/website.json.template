@@ -1,0 +1,7 @@
+{
+  "SECRET_KEY": "",
+  "MONGODB_HOST": "",
+  "MONGODB_DB": "",
+  "MONGODB_USR": "",
+  "MONGODB_PW": "",
+}
