@@ -47,6 +47,17 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts: 
+            - name: website-configuration
+              mountPath: /etc/website
+              readOnly: true
+      volumes:
+        - name: website-configuration
+          secret:
+           secretName: kdevops-website
+           items:
+            - key: website.json
+              path: website.json
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
