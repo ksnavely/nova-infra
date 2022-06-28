@@ -8,6 +8,11 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       {{- include "kdevops-website.selectorLabels" . | nindent 6 }}
@@ -38,10 +43,12 @@ spec:
               containerPort: 80
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 30
             httpGet:
               path: /
               port: 80
           readinessProbe:
+            initialDelaySeconds: 30
             httpGet:
               path: /
               port: http
