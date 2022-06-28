@@ -20,7 +20,14 @@ module "eks" {
       asg_desired_capacity          = 2
     },
     {
-      name                          = "worker-group-2"
+      name                          = "t2-large-worker-group-1"
+      instance_type                 = "t2.large"
+      additional_userdata           = "large instances, for example, if needed"
+      additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
+      asg_desired_capacity          = 3
+    },
+    {
+      name                          = "t2-medium-worker-group-2" # Note the security group
       instance_type                 = "t2.medium"
       additional_userdata           = "medium instances, for example, if needed"
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
