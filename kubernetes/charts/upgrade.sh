@@ -8,7 +8,18 @@ helm upgrade cert-manager cert-manager/ --namespace cert-manager --create-namesp
 # Trino, SQL at scale
 helm upgrade nt-trino trino/
 
+if [ -z "$MONGODB_ROOT_PASSWORD" -o -z "$MONGO_USR" -o -z "$MONGO_PW" ]; then
+  echo "Cowardly refusing to configure MongoDB without auth config."
+else
+  helm upgrade mongo001 mongodb/ --set "auth.rootPassword=$MONGO_ROOT_PASSWORD,auth.username=$MONGO_USR,auth.password=$MONGO_PW" --version v12.1.20
+fi
+
 # kdevops.com
 helm upgrade kdevops-website kdevops-website/ --values kdevops-website/values.yaml --set website_json_conf="`cat kdevops-website/website.json | base64`"
 
-
+# datadog monitoring
+if [ -z "$DDOG_API_KEY" ]; then
+  echo "Can't upgrade datadog without an API key."
+else
+  helm upgrade ddog --set datadog.apiKey=$DDOG_API_KEY datadog/ --version v2.36.0
+fi
