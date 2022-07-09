@@ -24,3 +24,5 @@ else
   helm install ddog --set datadog.apiKey=$DDOG_API_KEY datadog --version v2.36.0
 fi
 
+helm install --namespace tidb-admin tidb-operator pingcap/tidb-operator --version v1.3.6
+
