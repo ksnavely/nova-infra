@@ -3,6 +3,20 @@ items:
 - apiVersion: v1
   kind: Namespace
   metadata:
+    creationTimestamp: "2022-06-22T01:53:00Z"
+    labels:
+      name: cert-manager
+    name: cert-manager
+    resourceVersion: "398636"
+    uid: a6bf59bc-b18d-4503-97f8-67cd294db49e
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
     creationTimestamp: "2022-06-19T15:43:02Z"
     name: default
     resourceVersion: "221"
@@ -43,6 +57,30 @@ items:
     name: kube-system
     resourceVersion: "15"
     uid: b3d07ea8-2519-41e1-a438-a9e3cc6a50d1
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    creationTimestamp: "2022-07-09T16:10:00Z"
+    name: tidb-admin
+    resourceVersion: "4247983"
+    uid: 5f1c173d-d41d-4773-ba79-c771c703c393
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    creationTimestamp: "2022-07-09T16:16:06Z"
+    name: tidb-cluster
+    resourceVersion: "4249063"
+    uid: 7a1c9a73-b047-4d5a-b3d3-ab9c6670e3a2
   spec:
     finalizers:
     - kubernetes
